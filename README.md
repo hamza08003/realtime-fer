@@ -13,9 +13,9 @@ A real-time facial emotion recognition web application built with Streamlit and 
 
 ## Prerequisites
 
-- Python 3.8 or higher
-- Conda (recommended for environment management)
-- Webcam (for real-time detection)
+- Python 3.10 or higher
+- Conda (for environment management)
+- Webcam (for real-time emotions detection)
 - CUDA-capable GPU (optional, for faster inference)
 
 ## Installation
@@ -50,28 +50,6 @@ If you prefer using pip instead of conda:
 
 ```bash
 pip install -r requirements.txt
-```
-
-## Project Structure
-
-```
-fer_streamlit_app/
-├── app.py                         # Main Streamlit application
-├── requirements.txt               # Python dependencies
-├── environment.yml                # Conda environment configuration
-├── nn_architecture/               # Neural network architecture files
-│   ├── __init__.py
-│   ├── ResEmote_Net.py
-├── utils/                         # Utility functions
-│   ├── face_detection.py
-│   ├── inference.py
-│   └── results_manager.py
-├── trained_model/                 # Pre-trained model files
-├── static/                        # Static assets (CSS, images)
-│   ├── confidence_scores.html
-│   ├── style.css
-│   ├── facial-recognition.png
-└── img_analysis_results/          # Directory for analysis results
 ```
 
 ## Running the Application
