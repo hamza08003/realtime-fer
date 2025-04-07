@@ -22,9 +22,10 @@ A real-time facial emotion recognition web application built with Streamlit and 
 
 ### 1. Install Conda
 
-1. Download Miniconda from [https://docs.conda.io/en/latest/miniconda.html](https://docs.conda.io/en/latest/miniconda.html)
+1. Download Anaconda from [https://docs.conda.io/en/latest/miniconda.html](https://www.anaconda.com/download)
 2. Run the installer and follow the installation instructions
 3. Verify installation by opening a terminal/command prompt and running:
+   
    ```bash
    conda --version
    ```
@@ -32,17 +33,14 @@ A real-time facial emotion recognition web application built with Streamlit and 
 ### 2. Clone the Repository
 
 ```bash
-git clone <https://github.com/hamza08003/realtime-fer>
-cd fer_streamlit_app
+git clone https://github.com/hamza08003/realtime-fer
+cd realtime-fer
 ```
 
 ### 3. Create and Activate Conda Environment
 
 ```bash
-# Create environment from environment.yml
 conda env create -f environment.yml
-
-# Activate the environment
 conda activate realtime_fer
 ```
 
@@ -58,32 +56,39 @@ pip install -r requirements.txt
 
 ```
 fer_streamlit_app/
-├── app.py                  # Main Streamlit application
-├── requirements.txt        # Python dependencies
-├── environment.yml         # Conda environment configuration
-├── nn_architecture/        # Neural network architecture files
-├── utils/                  # Utility functions
+├── app.py                         # Main Streamlit application
+├── requirements.txt               # Python dependencies
+├── environment.yml                # Conda environment configuration
+├── nn_architecture/               # Neural network architecture files
+│   ├── __init__.py
+│   ├── ResEmote_Net.py
+├── utils/                         # Utility functions
 │   ├── face_detection.py
 │   ├── inference.py
 │   └── results_manager.py
-├── trained_model/          # Pre-trained model files
-├── static/                 # Static assets (CSS, images)
-└── img_analysis_results/   # Directory for analysis results
+├── trained_model/                 # Pre-trained model files
+├── static/                        # Static assets (CSS, images)
+│   ├── confidence_scores.html
+│   ├── style.css
+│   ├── facial-recognition.png
+└── img_analysis_results/          # Directory for analysis results
 ```
 
 ## Running the Application
 
 1. Make sure you have activated the conda environment:
+   
    ```bash
    conda activate realtime_fer
    ```
 
-2. Start the Streamlit application:
+3. Start the Streamlit application:
+   
    ```bash
    streamlit run app.py
    ```
 
-3. The application will open in your default web browser at `http://localhost:8501`
+5. The application will open in your default web browser at `http://localhost:8501`
 
 ## Usage
 
