@@ -1,0 +1,95 @@
+<html>
+<head>
+    <style>
+        .confidence-section {
+            width: 500px;
+            margin: 20px auto;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            color: #e0e0e0;
+        }
+        .emotion-bars {
+            display: flex;
+            flex-direction: column;
+        }
+        .emotion-bar {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        .label {
+            flex: 1;
+            text-align: left;
+            color: #e0e0e0;
+            margin-right: 5px;
+        }
+        .bar-container {
+            flex: 2;
+            width: 200px;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-right: 10px;
+            overflow: hidden;
+        }
+        .bar {
+            height: 100%;
+            background-color: orange;
+            border-radius: 5px;
+            width: 0%;
+            transition: width 1s ease-in-out;
+            min-width: 5px;
+        }
+        .percentage {
+            flex: 0.5;
+            text-align: right;
+            color: #e0e0e0;
+            font-size: 14px;
+        }
+        h3 {
+            color: #00ffcc;
+            text-shadow: 0 0 15px rgba(0, 255, 204, 0.7);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="confidence-section">
+        <h3>Confidence Scores</h3>
+        <div class="emotion-bars">
+            {{html_content}}
+        </div>
+    </div>
+    <script>
+        var sortedProbs = JSON.parse('{{probs_json}}');
+        function updateBars() {
+            console.log("Attempting to update bars with probabilities:", sortedProbs);
+            const interval = setInterval(function() {
+                let allBarsFound = true;
+                sortedProbs.forEach(function(pair) {
+                    var label = pair[0];
+                    var prob = pair[1];
+                    var id = label.toLowerCase().replace(" ", "-");
+                    var bar = document.getElementById(id + "-bar")?.querySelector(".bar");
+                    if (bar) {
+                        prob = Math.min(100, Math.max(0, prob));
+                        bar.style.width = prob + "%";
+                        console.log("Set width for " + id + " to " + prob + "%");
+                    } else {
+                        console.log("Bar not found for " + id);
+                        allBarsFound = false;
+                    }
+                });
+                if (allBarsFound) {
+                    clearInterval(interval);
+                }
+            }, 300);
+        }
+        if (document.readyState === "complete" || document.readyState === "interactive") {
+            updateBars();
+        } else {
+            document.addEventListener("DOMContentLoaded", updateBars);
+        }
+    </script>
+</body>
+</html>
