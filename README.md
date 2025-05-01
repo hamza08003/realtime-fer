@@ -40,13 +40,13 @@ cd realtime-fer
 ### 3. Create and Activate Conda Environment
 
 ```bash
-conda env create -f environment.yml
-conda activate realtime_fer
+conda create --name fer python=3.12
+conda activate fer
 ```
 
 ### 4. Install Dependencies
 
-If you prefer using pip instead of conda:
+Install Required Packages using this command
 
 ```bash
 pip install -r requirements.txt
